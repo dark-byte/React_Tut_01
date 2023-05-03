@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai';
-const Question = () => {
-  return <h2>question component</h2>;
+import SingleQuestion from './SingleQuestion';
+const Question = ({questions, toggleActiveId, activeId}) => {
+  return <section>
+    {questions.map((question)=>{
+      return <SingleQuestion key = {question.id} {...question} activeId={activeId} toggleActiveId={toggleActiveId}/>
+    })}
+  </section>
 };
 
 export default Question;

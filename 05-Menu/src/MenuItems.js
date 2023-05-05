@@ -1,4 +1,3 @@
-
 const MenuItems = ({img, title, price, desc}) => {
   return (
     <article className="menu-item">

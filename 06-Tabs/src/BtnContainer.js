@@ -1,9 +1,21 @@
 import React from 'react';
 
-const BtnContainer = () => {
+const BtnContainer = ({jobs, currentItem, setCurrentItem}) => {
+
   return (
-    <div>
-      
+    <div className='btn-container'>
+      {jobs.map((item, index)=>{
+        return(
+            <button 
+                className={index === currentItem ? 'job-btn active-btn' : 'job-btn'}
+                onClick={()=>{
+                setCurrentItem(index)
+            }} 
+                id={item.id}>
+                {item.company}
+            </button>
+        )
+      })}
     </div>
   );
 }

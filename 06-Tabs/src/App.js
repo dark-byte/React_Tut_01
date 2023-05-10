@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FaAngleDoubleRight } from 'react-icons/fa'
 import JobInfo from './JobInfo'
+import BtnContainer from './BtnContainer'
 
 const url = 'https://course-api.com/react-tabs-project'
 
@@ -8,6 +9,7 @@ function App() {
   
   const [jobs, setJobs] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [currentItem, setCurrentItem] = useState(0)
   
   const fetchJobs = async()=>{
     const res = await fetch(url)
@@ -31,10 +33,16 @@ function App() {
   }
 
   return(
-    <section className='jobs-center'>
-      {/* Something */}
-      {/* Something else */}
-      <JobInfo jobs ={jobs}/>
+    <section className='section'>
+      <div className="title">
+        <h1>Experience</h1>
+        <div className="underline"></div>
+        </div>
+      <section className='jobs-center'>
+        <BtnContainer jobs = {jobs} currentItem = {currentItem} setCurrentItem = {setCurrentItem}/>
+        <JobInfo jobs ={jobs} currentItem = {currentItem}/>
+      </section>
+
     </section>
   )
 }

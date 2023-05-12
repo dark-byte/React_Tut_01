@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import people from './data';
 import { FaQuoteRight } from 'react-icons/fa';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
@@ -11,6 +11,15 @@ const Carousel = () => {
     const prev = ()=>{
         setCurrIndex((currIndex - 1 + people.length) % people.length)
     }
+
+    useEffect(()=>{
+        let sliderId = setInterval(() => {
+                next()
+            }, 2000)
+        return ()=>{
+            clearInterval(sliderId)
+        }
+    },[currIndex])
 
   return (
     <div className='section-center'>
